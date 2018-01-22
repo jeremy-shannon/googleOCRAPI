@@ -20,7 +20,6 @@ def main(input_file):
     '''
     request_list = []
     input_data = open(input_file).readlines()
-    print(input_data)
     for line in input_data:
         print(line)
         image_filename, features = line.lstrip().split(' ', 1)
@@ -44,13 +43,16 @@ def main(input_file):
         })
     
     full_request = json.dumps({'requests': request_list})
-
-
-    # data = open('/Users/<username>/testdata/vision.json', 'rb').read()
     response = requests.post(url='https://vision.googleapis.com/v1/images:annotate?key='+api_key, 
                              data=full_request, 
                              headers={'Content-Type': 'application/json'})
-    print(response.text)
+
+    with open('output.json', 'w', encoding='utf-8') as output_file:
+        json.dump(response.text, output_file, ensure_ascii=True)
+    
+    json_response = response.json()
+    words = json_response['responses'][0]['textAnnotations'][0]['description']
+    print(words)
 
 DETECTION_TYPES = [
     'TYPE_UNSPECIFIED',
