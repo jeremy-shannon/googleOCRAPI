@@ -16,7 +16,10 @@ def main(input_file):
        Google documentation, and includes options for other non-OCR Vision API requests.
 
     Args:
-        input_file: a file object, containing lines of input to convert.
+        input_file: a file object, containing lines of input to convert. 
+        Format: (pathToImage/imageName.ext) (detection type):(maximum detections)
+        Example: GM_settings_screen.png 5:10
+        (here, 5 refers to text annotation - OCR)
     '''
     request_list = []
     input_data = open(input_file).readlines()
