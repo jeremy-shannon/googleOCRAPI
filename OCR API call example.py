@@ -7,6 +7,7 @@ import config as cfg
 
 # Your Google Cloud Vision API Key should be stored in a file called
 #  config.py with the variable name googleCoudVisionAPIKey
+#  ex: googleCloudVisionAPIKey = "AIzaSyD................ClD8Nk"  (but get your own API key)
 api_key = cfg.googleCloudVisionAPIKey
 
 def main(input_file):
